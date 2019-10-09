@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 style="text-align: center;">Build a blog</h1>
+    
+
+    <hr />
+<!-- 
+    {% if blog_posts|length == 0 %}
+    <p>No current blog entries</p>
+    {% else %}
+
+        <ul>
+            {% for blog in blog_posts %}
+            <li>{{blog.title}}
+
+            </li>
+            <li>{{blog.entry}}</li>
+            {% endfor %}
+        </ul>
+
+    {% endif %}
+
+    <hr /> -->
+
+    <h2>Blog Posts</h2>
+
+    <ul style=" list-style-type: none;">
+        {% for blog in blog_posts %}
+        <hr />
+        <li style="font-weight: bold;"><a href="/blog">{{blog.title}}</a></li>
+        <li>{{blog.entry}}</li>
+        {% endfor %}
+    </ul>
+    
+
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+   
+
+    {% for blog in blog_posts %}
+    
+    <h1 style="text-align: center;">{{blog.title}}</h1>
+    {% endfor %}
+
+    <ul style=" list-style-type: none;">
+        {% for blog in blog_posts %}        
+        <li>{{blog.entry}}</li>
+        {% endfor %}
+    </ul>
+  
+{% endblock %}
