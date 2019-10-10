@@ -41,12 +41,13 @@ def newpost():
         db.session.commit()
         
     blog_posts = Blog.query.all()
+    
     return render_template('newpost.html',title="Add a Blog Entry",blog_posts=blog_posts)
 
 
     
 @app.route('/blog', methods=['POST', 'GET'])
-def main():
+def blog():
 
     blog_posts = Blog.query.all()
     return render_template('blog.html', blog_posts=blog_posts)
