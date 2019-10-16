@@ -1,6 +1,9 @@
 <!doctype html>
 <html>
     <head>
+        <link rel="stylesheet" type="text/css" href="css/normalize.css">
+        <link rel="stylesheet" type="text/css" href="css/selectors.css">
+
         <title>{{title}}</title>
         <style>
             .error {
@@ -61,6 +64,10 @@ button[type="submit"] {
     <div>
         <a href='/'>Main Blog Page   </a><a href='/newpost'>   Add a Blog Entry</a>
     </div>
+    <div>
+        <a href='/logout'>log out</a>
+    </div>
+
 
     {% with messages = get_flashed_messages(with_categories=True) %}
         <ul>
