@@ -72,17 +72,20 @@ button[type="submit"] {
         </style>
     </head>
 <body>
-
-    <div style="text-align: right;">
+<div>
+    <nav style="text-align: left;">
+        <a href='/users'>Blogz Bloggerz</a>
         <a href='/home'>Community</a>
         <a href='/'>My Blogz</a>
-        <a href='/newpost'>Add a Blog Entry</a>
-        <a href='/logout'>log out</a>
-    </div>
-    <div>
-        
-    </div>
+        <a href='/newpost'>Submit Blog Post</a>
 
+    </nav>
+
+    <nav style="text-align: right;">
+        <a href='/login'>Login</a>
+        <a href='/logout'>Log Out</a>
+    </nav>
+</div>
 
     {% with messages = get_flashed_messages(with_categories=True) %}
         

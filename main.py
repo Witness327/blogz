@@ -117,8 +117,18 @@ def home():
 
 @app.route('/users', methods=['POST', 'GET'])
 def users():
+    owner = User.query.filter_by(email=session['email']).first()
     blog_posts = User.query.all()
-    return render_template('singleusers.html', blog_posts=blog_posts)
+    return render_template('singleusers.html',owner=owner, blog_posts=blog_posts)
+
+@app.route('/usersblogs', methods=['POST', 'GET'])
+def usersblogs():
+    owner = User.query.filter_by(email=session['email']).first()
+    if request.method == 'GET':
+        postid = request.args.get('id')
+        blog_posts = Blog.query.get(postid)
+        blog_post = Blog.query.filter_by(owner=owner).all()
+        return render_template('mainpage.html', owner=owner, postid=postid, usersblogs=blog_posts, blog_post=blog_post)    
     
 # @app.route('/home', methods=['POST', 'GET'])
 # def home():
