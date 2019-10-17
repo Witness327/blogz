@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 style="text-align: center;">Build a blog</h1>
+    
+
+
+
+
+    <h1>Blog Users</h1>
+
+    <ul style=" list-style-type: none;">
+        {% for user in blog_posts %}
+        
+        <li style="font-weight: bold;"><a href="/users?id={{ user.id }}">{{ user.email }}</a> 
+
+        <hr />
+        {% endfor %}
+    </ul>
+
+
+{% endblock %}

@@ -49,8 +49,8 @@ def login():
         user = User.query.filter_by(email=email).first()
         if user and  check_pw_hash(password, user.pw_hash):
             session['email'] = email
-            flash("Logged in")
-            return redirect('/')
+            flash('Welcome Back!', 'logged-in')
+            return redirect('/newpost')
         else:
             flash('User password incorrect, or user does not exist', 'error')
 
@@ -72,7 +72,7 @@ def register():
             session['email'] = email
             return redirect('/')
         else:
-            return "<h1>Duplicate User</h1>"
+            flash('You already have an account with us! Just try logging in =)', 'dupicate')
 
     return render_template('signup.html')
 
@@ -110,12 +110,21 @@ def newpost():
     # if request.method == 'GET':
     # return redirect('/')
 
+@app.route('/home', methods=['POST', 'GET'])
+def home():
+    blog_posts = Blog.query.all()
+    return render_template('index.html', blog_posts=blog_posts)
+
+@app.route('/users', methods=['POST', 'GET'])
+def users():
+    blog_posts = User.query.all()
+    return render_template('singleusers.html', blog_posts=blog_posts)
     
-# @app.route('/blog', methods=['POST', 'GET'])
-# def blog():
+# @app.route('/home', methods=['POST', 'GET'])
+# def home():
 #     owner = User.query.filter_by(email=session['email']).first()
 #     blog_posts = Blog.query.filter_by(owner=owner).all()
-#     return render_template('blog.html', owner=owner, blog_posts=blog_posts)
+#     return render_template('blog.html', owner=owner,blog=blog_posts, blog_posts=blog_posts)
 
 @app.route('/blog', methods=['POST', 'GET'])
 def blog():
