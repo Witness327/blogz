@@ -121,6 +121,15 @@ def users():
     blog_posts = User.query.all()
     return render_template('singleusers.html',owner=owner, blog_posts=blog_posts)
 
+@app.route('/userblog', methods=['POST', 'GET'])
+def userblog():
+    owner = User.query.filter_by(email=session['email']).first()
+    if request.method == 'GET':
+        postid = request.args.get('id')
+        blog_posts = User.query.get(postid)
+        blog_post = User.query.filter_by(owner=owner).all()
+        return render_template('userblog.html', owner=owner, postid=postid, blog_posts=blog_posts, users=blog_post)
+
 @app.route('/usersblogs', methods=['POST', 'GET'])
 def usersblogs():
     owner = User.query.filter_by(email=session['email']).first()
@@ -142,6 +151,8 @@ def blog():
     if request.method == 'GET':
         postid = request.args.get('id')
         blog_posts = Blog.query.get(postid)
+        # owner_id = User.query.filter_by(blog_posts.owner_id)
+        # email = User.query.get(owner_id)
         blog_post = Blog.query.filter_by(owner=owner).all()
         return render_template('blog.html', owner=owner, postid=postid, blog=blog_posts, blog_post=blog_post)
 

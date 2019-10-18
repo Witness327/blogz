@@ -12,10 +12,10 @@
 
 
     <ul style=" list-style-type: none;">
-        {% for blog in blog_posts %}        
-        <li style="font-weight: bold;"><a href="/blog?id={{blog.id}}">{{ blog.title }}</a> 
+        {% for blog in blog_posts %}       
+        <li style="font-weight: bold;"><a href="/blog?id={{ user.id }}">{{ blog.title }}</a> 
         <li>{{ blog.entry }}</li>
-        <li style="font-weight: bold;"><a href="/users?id={{ blog.id }}">Written by: {{ blog.owner_id }}</a> 
+        <li style="font-weight: bold;"><a href="/users?id={{ user.id }}">Written by: {{ blog.owner_id }}</a> 
         <hr />        
         {% endfor %}   
     </ul>
